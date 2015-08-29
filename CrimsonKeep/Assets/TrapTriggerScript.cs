@@ -4,9 +4,9 @@ using System.Collections;
 public class TrapTriggerScript : MonoBehaviour {
 	Transform child;
 	// Use this for initialization
-	float pressurePlateDelay = 0.5f;
-	float upTime = 0.5f;
-	float downTime = 0.5f;
+	public float pressurePlateDelay = 0.5f;
+	public float upTime = 0.5f;
+	public float downTime = 0.5f;
 	public bool isTimed = true;
 	void Start () {
 		child = transform.GetChild (0);
