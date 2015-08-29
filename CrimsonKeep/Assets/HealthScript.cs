@@ -3,8 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class HealthScript : MonoBehaviour {
-	public static int currentHealth;
-	public static int maxHealth = 100;
+	private static float currentHealth;
+	public static float maxHealth = 100;
 	private static Image healthBar;
 	//private static Image healthBar;
 	private static HealthScript m_instance;
@@ -19,13 +19,26 @@ public class HealthScript : MonoBehaviour {
 		healthBar = GameObject.Find ("HealthBar").GetComponent<Image> ();
 		SetHealth (maxHealth);
 	}
+
+	void Update(){
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			SetHealth(-1);
+		}
+	}
 	
-	public static bool SetHealth(int changeInHealth){
+	public static bool SetHealth(float changeInHealth){
 		currentHealth += changeInHealth;
 		currentHealth = Mathf.Max (currentHealth, 0);
 		currentHealth = Mathf.Min (currentHealth, maxHealth);
-		healthBar.rectTransform.right = new Vector3(1105 - ((1105 - 816) * (currentHealth / maxHealth)), 285, 0);
-		Debug.Log (healthBar.rectTransform.right);
+		/*Debug.Log (currentHealth);
+		Debug.Log (maxHealth);
+		Debug.Log (currentHealth / maxHealth);*/
+		healthBar.rectTransform.offsetMax = new Vector2(-(1106 - ((1106 - 816) * (currentHealth / maxHealth))), 305);
+		//Debug.Log (healthBar.rectTransform.offsetMax);
 		return (currentHealth == 0);
+	}
+
+	public static float GetHealth(){
+		return currentHealth;
 	}
 }
