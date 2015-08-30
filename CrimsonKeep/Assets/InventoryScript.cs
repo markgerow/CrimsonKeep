@@ -16,7 +16,7 @@ public class InventoryScript : MonoBehaviour {
 	void Start () {
 		m_instance = this;
 		controller = GameObject.Find ("FPSController").GetComponent<FirstPersonController> ();
-		inventoryCanvas = GameObject.Find ("InventoryBackboard");
+		inventoryCanvas = GameObject.Find ("MenuBackboard");
 		inventoryCanvas.SetActive (false);
 	}
 	
