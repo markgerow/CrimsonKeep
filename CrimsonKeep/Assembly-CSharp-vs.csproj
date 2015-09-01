@@ -49,8 +49,12 @@
      <Compile Include="Assets\GameplayObjects\Scripts\DamageCollisionScript.cs" />
      <Compile Include="Assets\GameplayObjects\Scripts\HealthScript.cs" />
      <Compile Include="Assets\GameplayObjects\Scripts\TrapTriggerScript.cs" />
+     <Compile Include="Assets\InventoryItem.cs" />
+     <Compile Include="Assets\InventoryRightClick.cs" />
      <Compile Include="Assets\InventoryScript.cs" />
+     <Compile Include="Assets\MouseFollowScript.cs" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
+     <None Include="Assets\Inventory\Credits + C#.txt" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

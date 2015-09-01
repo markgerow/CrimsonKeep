@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{9E48DBF2-EB7A-AF74-C7F2-9E9F33F35D54}</ProjectGuid>
+	<ProjectGuid>{A276F6A0-87EC-3F34-E6A7-DC1EED014DA5}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<AssemblyName>Assembly-UnityScript</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,13 +46,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\GameplayObjects\Scripts\DamageCollisionScript.cs" />
-     <Compile Include="Assets\GameplayObjects\Scripts\HealthScript.cs" />
-     <Compile Include="Assets\GameplayObjects\Scripts\TrapTriggerScript.cs" />
-     <Compile Include="Assets\InventoryItem.cs" />
-     <Compile Include="Assets\InventoryRightClick.cs" />
-     <Compile Include="Assets\InventoryScript.cs" />
-     <Compile Include="Assets\MouseFollowScript.cs" />
+     <Compile Include="Assets\Inventory\Scripts\Character.js" />
+     <Compile Include="Assets\Inventory\Scripts\Inventory.js" />
+     <Compile Include="Assets\Inventory\Scripts\InventoryDisplay.js" />
+     <Compile Include="Assets\Inventory\Scripts\Items\EquipmentEffect.js" />
+     <Compile Include="Assets\Inventory\Scripts\Items\FirstPersonPickUp.js" />
+     <Compile Include="Assets\Inventory\Scripts\Items\Item.js" />
+     <Compile Include="Assets\Inventory\Scripts\Items\ItemEffect.js" />
+     <Compile Include="Assets\Inventory\Scripts\Other\ChangeScene.js" />
+     <Compile Include="Assets\Inventory\Scripts\Other\InvAudio.js" />
+     <Compile Include="Assets\Inventory\Scripts\Other\InvPauseGame.js" />
+     <Compile Include="Assets\Inventory\Scripts\Other\WeaponSwitch.js" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\Inventory\Credits + C#.txt" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />

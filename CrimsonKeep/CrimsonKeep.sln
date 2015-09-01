@@ -7,6 +7,10 @@ Project("{DE6E9801-B78D-C86E-4BE3-252CA12AC2FB}") = "CrimsonKeep", "Assembly-CSh
 EndProject
 Project("{DE6E9801-B78D-C86E-4BE3-252CA12AC2FB}") = "CrimsonKeep", "Assembly-CSharp-Editor.csproj", "{BDC17753-6916-5A49-9E1A-557E42EA692F}"
 EndProject
+Project("{DE6E9801-B78D-C86E-4BE3-252CA12AC2FB}") = "CrimsonKeep", "Assembly-UnityScript.unityproj", "{A276F6A0-87EC-3F34-E6A7-DC1EED014DA5}"
+EndProject
+Project("{DE6E9801-B78D-C86E-4BE3-252CA12AC2FB}") = "CrimsonKeep", "Assembly-UnityScript-Editor.unityproj", "{7E13D7EA-241D-8924-2141-75B7A9451B77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,11 +29,19 @@ Global
 		{BDC17753-6916-5A49-9E1A-557E42EA692F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDC17753-6916-5A49-9E1A-557E42EA692F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDC17753-6916-5A49-9E1A-557E42EA692F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A276F6A0-87EC-3F34-E6A7-DC1EED014DA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A276F6A0-87EC-3F34-E6A7-DC1EED014DA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A276F6A0-87EC-3F34-E6A7-DC1EED014DA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A276F6A0-87EC-3F34-E6A7-DC1EED014DA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E13D7EA-241D-8924-2141-75B7A9451B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E13D7EA-241D-8924-2141-75B7A9451B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E13D7EA-241D-8924-2141-75B7A9451B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E13D7EA-241D-8924-2141-75B7A9451B77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-														GlobalSection(MonoDevelopProperties) = preSolution
+																						GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
