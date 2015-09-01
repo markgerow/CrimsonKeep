@@ -33,7 +33,7 @@ public class HealthScript : MonoBehaviour {
 		/*Debug.Log (currentHealth);
 		Debug.Log (maxHealth);
 		Debug.Log (currentHealth / maxHealth);*/
-		healthBar.rectTransform.offsetMax = new Vector2(-(1106 - ((1106 - 816) * (currentHealth / maxHealth))), 305);
+		healthBar.rectTransform.offsetMax = new Vector2(-(1106 - ((1106 - 816) * (currentHealth / maxHealth))), -215);
 		//Debug.Log (healthBar.rectTransform.offsetMax);
 		return (currentHealth == 0);
 	}
