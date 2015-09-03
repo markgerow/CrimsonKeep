@@ -4,16 +4,17 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
-    [Serializable]
-    public class MouseLook
+    //[Serializable]
+    public class MouseLook : MonoBehaviour
     {
-        public float XSensitivity = 2f;
-        public float YSensitivity = 2f;
+        public float XSensitivity = 10f;
+        public float YSensitivity = 10f;
         public bool clampVerticalRotation = true;
         public float MinimumX = -90F;
         public float MaximumX = 90F;
         public bool smooth;
         public float smoothTime = 5f;
+		public bool functioning = true;
 
 
         private Quaternion m_CharacterTargetRot;
@@ -29,7 +30,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void LookRotation(Transform character, Transform camera)
         {
-            float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
+			if (!functioning)
+				return;
+			float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
             float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
 
             m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);

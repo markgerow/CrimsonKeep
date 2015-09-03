@@ -14,13 +14,13 @@ var disableMouseLookComponent = true; //Do we want to enable/disable the MouseLo
 //These two variables are used when disabling/enabling the MouseLook component.
 var ThePlayer : Transform;
 var TheCamera : Transform;
-
+//public var theMouseHolder : Transform;
 var lockUnlockCursor = true; //Do we want to lock/unlock the mouse cursor?
 
 //Storing the components
-private var lookAround01 : Behaviour;
-private var lookAround02 : Behaviour;
-
+public var lookAround01 : Behaviour;
+public var lookAround02 : Behaviour;
+public var lookAroundFix : UnityStandardAssets.Characters.FirstPerson.MouseLook;
 @script AddComponentMenu ("Inventory/Other/Inv Pause Game")
 
 //Checking for the Inventory object and loading in components.
@@ -31,17 +31,19 @@ function Awake ()
 		Debug.LogError("A 'InvPauseGame' script is attached to " + transform.name + ". It needs to be attached to an 'Inventory' object.");
 	}
 
-	if (disableMouseLookComponent == true)
+	/*if (disableMouseLookComponent == true)
 	{
 		if (ThePlayer != null && TheCamera != null)
 		{
-			if (ThePlayer.GetComponent("MouseLook") != null && TheCamera.GetComponent("MouseLook") != null)
+			if (ThePlayer.GetComponent("MouseLook") != null || TheCamera.GetComponent("MouseLook") != null)
 			{
 				lookAround01 = ThePlayer.GetComponent("MouseLook");
 				lookAround02 = TheCamera.GetComponent("MouseLook");
+				//lookAround01 = theMouseHolder.GetComponent(typeof(FirstPersonController)).m_MouseLook;
 			}
 			else
 			{
+			Debug.LogError((ThePlayer.GetComponent("MouseLook")!=null) + " " + (TheCamera.GetComponent("MouseLook")!=null));
 				Debug.LogError("The 'InvPauseGame' script on " + transform.name + " has a variable called 'disableMouseLookComponent' which is set to true though no MouseLook component can be found under (either) the Player or Camera");
 				disableMouseLookComponent = false;
 			}
@@ -51,7 +53,7 @@ function Awake ()
 			Debug.LogError("The variables of the 'InvPauseGame' script on '" + transform.name + "' has not been assigned.");
 			disableMouseLookComponent = false;
 		}
-	}
+	}*/
 }
 
 //This function is called from the InventoryDisplay and Character script.
@@ -92,11 +94,14 @@ function PauseGame (pauseIt : boolean)
 		{
 			if (pauseIt == true)
 			{
+			Debug.LogError("Hitting here but getting nowhere");
+				lookAroundFix.functioning = false;
 				lookAround01.enabled = false;
 				lookAround02.enabled = false;
 			}
 			else
 			{
+				lookAroundFix.functioning = true;
 				lookAround01.enabled = true;
 				lookAround02.enabled = true;
 			}
