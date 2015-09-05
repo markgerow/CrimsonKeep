@@ -94,13 +94,13 @@ function PauseGame (pauseIt : boolean)
 		{
 			if (pauseIt == true)
 			{
-			Debug.LogError("Hitting here but getting nowhere");
 				lookAroundFix.functioning = false;
 				lookAround01.enabled = false;
 				lookAround02.enabled = false;
 			}
 			else
 			{
+				//Screen.lockCursor = false;
 				lookAroundFix.functioning = true;
 				lookAround01.enabled = true;
 				lookAround02.enabled = true;
