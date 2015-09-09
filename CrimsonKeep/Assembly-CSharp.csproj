@@ -52,6 +52,7 @@
      <Compile Include="Assets\InventoryItem.cs" />
      <Compile Include="Assets\InventoryRightClick.cs" />
      <Compile Include="Assets\InventoryScript.cs" />
+     <Compile Include="Assets\ManaScript.cs" />
      <Compile Include="Assets\MouseFollowScript.cs" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\Inventory\Credits + C#.txt" />

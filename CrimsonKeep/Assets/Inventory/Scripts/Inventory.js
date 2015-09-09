@@ -53,6 +53,8 @@ function RemoveItem(Item:Transform)
 	{
 		if(i == Item) //When a match is found, remove the Item.
 		{
+			
+			i.position = Camera.main.transform.position + Camera.main.transform.forward;
 			newContents.RemoveAt(index);
 			shouldend=true;
 			//No need to continue running through the loop since we found our item.

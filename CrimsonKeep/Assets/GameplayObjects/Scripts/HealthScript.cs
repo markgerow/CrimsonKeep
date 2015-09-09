@@ -5,8 +5,8 @@ using System.Collections;
 public class HealthScript : MonoBehaviour {
 	private static float currentHealth;
 	public static float maxHealth = 100;
-	private static Image healthBar;
-	//private static Image healthBar;
+	private static Image HealthBar;
+	//private static Image HealthBar;
 	private static HealthScript m_instance;
 	public static HealthScript instance{
 		get{
@@ -16,7 +16,7 @@ public class HealthScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		m_instance = this;
-		healthBar = GameObject.Find ("HealthBar").GetComponent<Image> ();
+		HealthBar = GameObject.Find ("HealthBar").GetComponent<Image> ();
 		SetHealth (maxHealth);
 	}
 
@@ -30,11 +30,7 @@ public class HealthScript : MonoBehaviour {
 		currentHealth += changeInHealth;
 		currentHealth = Mathf.Max (currentHealth, 0);
 		currentHealth = Mathf.Min (currentHealth, maxHealth);
-		/*Debug.Log (currentHealth);
-		Debug.Log (maxHealth);
-		Debug.Log (currentHealth / maxHealth);*/
-		healthBar.rectTransform.offsetMax = new Vector2(-(1106 - ((1106 - 816) * (currentHealth / maxHealth))), -215);
-		//Debug.Log (healthBar.rectTransform.offsetMax);
+		HealthBar.GetComponent<Image> ().fillAmount = currentHealth / maxHealth;
 		return (currentHealth == 0);
 	}
 
