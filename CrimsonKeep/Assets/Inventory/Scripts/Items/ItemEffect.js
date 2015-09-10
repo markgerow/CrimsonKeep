@@ -42,6 +42,7 @@ function DeleteUsedItem()
 	if (item.stack == 1) //Remove item
 	{
 		playersInv.RemoveItem(this.gameObject.transform);
+		Destroy(this.gameObject);
 	}
 	else //Remove from stack
 	{

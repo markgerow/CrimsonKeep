@@ -60,6 +60,7 @@ function OnMouseDown()
 //Picking up the Item.
 function PickUpItem ()
 {
+Debug.Log("Picking up Item");
 	var getit=true;
 	if(canGet){//if its getable or hasnt been gotten.
 	
@@ -87,6 +88,7 @@ function PickUpItem ()
 		//If we can get it and the inventory isn't full.
 		if (getit && playersinv.Contents.length < playersinv.MaxContent)
 		{
+		Debug.Log("Moving it to the player");
 			playersinv.AddItem(this.transform);
 			MoveMeToThePlayer(playersinv.itemHolderObject);//moves the object, to the player
 		}
@@ -109,6 +111,17 @@ function MoveMeToThePlayer(itemHolderObject : Transform)
 		GetComponent(MeshRenderer).enabled = false;
 	}
 	
+	var childs : int = transform.childCount;
+		Debug.Log("childs " + childs);
+ 		for (var t = 0; t < childs; t++)
+ 		{
+ 			Debug.Log(t);
+			if(transform.GetChild(t).GetComponent(MeshRenderer) !=null){
+				transform.GetChild(t).gameObject.GetComponent(MeshRenderer).enabled = false;
+				transform.GetChild(t).gameObject.GetComponent(Collider).enabled = false;
+				}
+		 }
+	
 	if (GetComponent(Collider) != null)
 	{
 		GetComponent(Collider).enabled = false;
@@ -116,7 +129,7 @@ function MoveMeToThePlayer(itemHolderObject : Transform)
 	
 	GetComponent("Item").enabled = false;
 	
-	transform.parent = itemHolderObject;
+	transform.SetParent(itemHolderObject, false);
 	transform.localPosition = Vector3.zero;
 }
 
@@ -137,7 +150,7 @@ function DropMeFromThePlayer(makeDuplicate : boolean)
 		{
 			GetComponent(Collider).enabled = true;
 		}
-	
+		
 		GetComponent("Item").enabled = true;
 		
 		transform.parent = null;
@@ -165,6 +178,17 @@ function DropMeFromThePlayer(makeDuplicate : boolean)
 		clone.transform.parent = null;
 		clone.name = gameObject.name;
 	}
+	
+		var childs : int = transform.childCount;
+		Debug.Log("childs " + childs);
+ 		for (var t = 0; t < childs; t++)
+ 		{
+ 			Debug.Log(t);
+			if(transform.GetChild(t).GetComponent(MeshRenderer) !=null){
+				transform.GetChild(t).gameObject.GetComponent(MeshRenderer).enabled = true;
+				transform.GetChild(t).gameObject.GetComponent(Collider).enabled = true;
+				}
+		 }
 }
 
 function DelayPhysics ()
