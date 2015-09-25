@@ -1,6 +1,7 @@
 //The Character window (CSheet).
 
 var WeaponSlot : Transform; //This is where the Weapons are going to go (be parented too). In my case it's the "Melee" gameobject.
+var OffhandSlot : Transform;
 
 private var ArmorSlot : Item[]; //This is the built in Array that stores the Items equipped. You can change this to static if you want to access it from another script.
 var ArmorSlotName : String[]; //This determines how many slots the character has (Head, Legs, Weapon and so on) and the text on each slot.
@@ -103,46 +104,50 @@ function UseItem(i:Item,slot:int,autoequip:boolean)
 }
 
 //Equip an item to a slot.
-function EquipItem(i:Item,slot:int)
-{
-	if(i.itemType == ArmorSlotName[slot]) //If the item can be equipped there:
-	{
-		if(CheckSlot(slot)) //If theres an item equipped to that slot we unequip it first:
-		{
-			UnequipItem(ArmorSlot[slot]);
-			ArmorSlot[slot]=null;
-		}
-		ArmorSlot[slot]=i; //When we find the slot we set it to the item.
+function EquipItem(i:Item,slot:int){
+    for(itemName in i.itemType){
+        if(itemName == ArmorSlotName[slot]) //If the item can be equipped there:
+        {
+            if(CheckSlot(slot)) //If theres an item equipped to that slot we unequip it first:
+            {
+                UnequipItem(ArmorSlot[slot]);
+                ArmorSlot[slot]=null;
+            }
+            ArmorSlot[slot]=i; //When we find the slot we set it to the item.
 		
-		gameObject.SendMessage ("PlayEquipSound", SendMessageOptions.DontRequireReceiver); //Play sound
+            gameObject.SendMessage ("PlayEquipSound", SendMessageOptions.DontRequireReceiver); //Play sound
 		
-		//We tell the Item to handle EquipmentEffects (if any).
-		if (i.GetComponent(EquipmentEffect) != null)
-		{
-			equipmentEffectIs = true;
-			i.GetComponent(EquipmentEffect).EquipmentEffectToggle(equipmentEffectIs);
-		}
+            //We tell the Item to handle EquipmentEffects (if any).
+            if (i.GetComponent(EquipmentEffect) != null)
+            {
+                equipmentEffectIs = true;
+                i.GetComponent(EquipmentEffect).EquipmentEffectToggle(equipmentEffectIs);
+            }
 		
-		//If the item is also a weapon we call the PlaceWeapon function.
-		if (i.isAlsoWeapon == true)
-		{
-			if (i.equippedWeaponVersion != null)
-			{
-				PlaceWeapon(i);
-			}
+            //If the item is also a weapon we call the PlaceWeapon function.
+            if (i.isAlsoWeapon == true)
+            {
+                if (i.equippedWeaponVersion != null)
+                {
+                    if(ArmorSlotName[slot] == "Main")
+                        PlaceWeapon(i, true);
+                    else
+                        PlaceWeapon(i, false);
+                }
 			
-			else 
-			{
-				Debug.LogError("Remember to assign the equip weapon variable!");
-			}
-		}
-		if (DebugMode)
-		{
-			Debug.Log(i.name + " has been equipped");
-		}
+                else 
+                {
+                    Debug.LogError("Remember to assign the equip weapon variable!");
+                }
+            }
+            if (DebugMode)
+            {
+                Debug.Log(i.name + " has been equipped");
+            }
 		
-		playersinv.RemoveItem(i.transform); //We remove the item from the inventory
-	}
+            playersinv.RemoveItem(i.transform); //We remove the item from the inventory
+        }
+    }
 }
 
 //Unequip an item.
@@ -170,12 +175,18 @@ function UnequipItem(i:Item)
 }
 
 //Places the weapon in the hand of the Player.
-function PlaceWeapon (Item)
+function PlaceWeapon (Item, isMain : boolean)
 {
-		var Clone = Instantiate (Item.equippedWeaponVersion, WeaponSlot.position, WeaponSlot.rotation);
+    var Clone;// = Instantiate (Item.equippedWeaponVersion, WeaponSlot.position, WeaponSlot.rotation);
+		if(isMain){
+		    Clone = Instantiate (Item.equippedWeaponVersion, WeaponSlot.position, WeaponSlot.rotation);
+		    Clone.transform.parent = WeaponSlot;
+		}else{
+		    Clone = Instantiate (Item.equippedWeaponVersion, OffhandSlot.position, OffhandSlot.rotation);
+		    Clone.transform.parent = OffhandSlot;
+		}
 		Clone.name = Item.equippedWeaponVersion.name;
-		Clone.transform.parent = WeaponSlot;
-		if (DebugMode)
+    if (DebugMode)
 		{
 			Debug.Log(Item.name + " has been placed as weapon");
 		}

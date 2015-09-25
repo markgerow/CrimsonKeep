@@ -1,6 +1,8 @@
+import System.Collections.Generic;
+
 var itemIcon : Texture2D; //The Icon.
 var canGet = true; //If we can pick up the Item.
-var itemType : String; //This will let us equip the item to specific slots. Ex: Head, Shoulder, or whatever we set up. If the item is equipment (or weapon) this needs to match a slot to work properly.
+var itemType : List.<String>; //This will let us equip the item to specific slots. Ex: Head, Shoulder, or whatever we set up. If the item is equipment (or weapon) this needs to match a slot to work properly.
 var stackable = false; //Is it stackable? If yes then items with the same itemType will be stacked.
 var maxStack = 20; //How many Items each stack can have before creating a new one. Remember that the Items that should be stacked should have the same itemType.
 var stack = 1; //This is how many stack counts this Item will take up.
